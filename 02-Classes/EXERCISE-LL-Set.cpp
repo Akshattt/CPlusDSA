@@ -137,7 +137,18 @@ class LinkedList {
         //                               //
         //                               //
         //                               //
-        ///////////////////////////////////        
+        /////////////////////////////////// 
+
+        bool set(int index, int value)
+        {
+            if(index<0 || index >= length) return false;
+            Node* temp= get(index);
+            if(temp) {
+                temp->value = value;
+                return true;
+            }
+            return false;
+        }      
 
 };
 
