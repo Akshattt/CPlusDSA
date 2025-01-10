@@ -150,11 +150,21 @@ class LinkedList {
 
         bool insert(int index, int value)
         {
-            if(index<0 || index>=length) return false;
+            if(index<0 || index>length) return false;
             if(index==0)
             {prepend(value);
             return true;}
-            
+            if(index==length)
+            {
+                append(value);
+                return true;
+            }
+            Node* newnode= new Node(value);
+            Node* temp = get(index-1);
+            newnode->next = temp->next;
+            temp->next = newnode;
+            length++;
+            return true;
         }		
 
 };
@@ -182,7 +192,7 @@ int main() {
     cout << "\nLL after insert(0) at beginning:\n";
     myLinkedList->printList();
 
-    myLinkedList->insert(4, 4);
+    myLinkedList->insert(4,4);
 
     cout << "\nLL after insert(4) at end:\n";
     myLinkedList->printList();
